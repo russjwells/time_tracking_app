@@ -69,7 +69,7 @@ const TimerForm = React.createClass({
                 {submitText}
               </button>
               <button className='ui basic red button'>
-                Cancel
+                Cancel 
               </button>
             </div>
           </div>
