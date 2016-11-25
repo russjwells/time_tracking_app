@@ -1,6 +1,6 @@
 const TimersDashboard = React.createClass({
   render: function () {
-    return (
+    return(
       <div className='ui three column centered grid'>
         <div className='column'>
           <EditableTimerList />
@@ -22,6 +22,13 @@ const EditableTimerList = React.createClass({
           project='Web Domination'
           elapsed='8986300'
           runningSince={null}
+          editFormOpen={false}
+        />
+        <EditableTimer
+          title='Learn Extreme Ironing'
+          project='World Domination'
+          elapsed='3890985'
+          runningSince={null}
           editFormOpen={true}
         />
       </div>
@@ -41,7 +48,7 @@ const EditableTimer = React.createClass({
     } else {
       return (
         <Timer
-          title={title.props.title}
+          title={this.props.title}
           project={this.props.project}
           elapsed={this.props.elapsed}
           runningSince={this.props.runningSince}
@@ -101,7 +108,7 @@ const ToggleableTimerForm = React.createClass({
 
 const Timer = React.createClass({
   render: function () {
-    const esapsedString = helpers.renderElapsedString(this.props.elapsed);
+    const elapsedString = helpers.renderElapsedString(this.props.elapsed);
     return (
       <div className='ui centered card'>
         <div className='content'>
