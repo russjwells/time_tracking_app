@@ -1,4 +1,7 @@
 const TimersDashboard = React.createClass({
+  getInitalState: function () {
+
+  },
   render: function () {
     return(
       <div className='ui three column centered grid'>
