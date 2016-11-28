@@ -1,15 +1,32 @@
 const TimersDashboard = React.createClass({
   getInitalState: function () {
-
+    return {
+      timers:[
+        {
+          title: 'Practice squat',
+          project: 'Gym Chores',
+          id: uuid.v4(),
+          elapsed: 5456099,
+          runningSince: Date.now(),
+        },
+        {
+          title: 'Bake squash',
+          project: 'Kitchen Chores',
+          id: uuid.v4(),
+          elapsed: 1273998,
+          runningSince: null,
+        },
+      ],
+    };
   },
   render: function () {
     return(
       <div className='ui three column centered grid'>
         <div className='column'>
-          <EditableTimerList />
-          <ToggleableTimerForm
-            isOpen={true}
+          <EditableTimerList
+            timers={this.state.timers}
           />
+          <ToggleableTimerForm />
         </div>
       </div>
     );
@@ -18,22 +35,19 @@ const TimersDashboard = React.createClass({
 
 const EditableTimerList = React.createClass({
   render: function () {
+    const timers = this.props.timers.map((timer) => (
+      <EditableTimer
+        key={timer.id}
+        id={timer.id}
+        title={timer.title}
+        project={timer.project}
+        elapsed={timer.elapsed}
+        runningSince={timer.runningSince}
+      />
+    ));
     return (
       <div id='timers'>
-        <EditableTimer
-          title='Learn React'
-          project='Web Domination'
-          elapsed='8986300'
-          runningSince={null}
-          editFormOpen={false}
-        />
-        <EditableTimer
-          title='Learn Extreme Ironing'
-          project='World Domination'
-          elapsed='3890985'
-          runningSince={null}
-          editFormOpen={true}
-        />
+        {timers}
       </div>
     );
   },
