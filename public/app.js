@@ -1,7 +1,7 @@
 const TimersDashboard = React.createClass({
-  getInitalState: function () {
+  getInitialState: function () {
     return {
-      timers:[
+      timers: [
         {
           title: 'Practice squat',
           project: 'Gym Chores',
@@ -20,7 +20,7 @@ const TimersDashboard = React.createClass({
     };
   },
   render: function () {
-    return(
+    return (
       <div className='ui three column centered grid'>
         <div className='column'>
           <EditableTimerList
@@ -30,6 +30,35 @@ const TimersDashboard = React.createClass({
         </div>
       </div>
     );
+  },
+});
+
+const ToggleableTimerForm = React.createClass({
+  getInitialState: function () {
+    return {
+      isOpen: false,
+    };
+  },
+  handleFormOpen: function () {
+    this.setState({ isOpen: true });
+  },
+  render: function () {
+    if (this.state.isOpen) {
+      return (
+        <TimerForm />
+      );
+    } else {
+      return (
+        <div className='ui basic content center aligned segment'>
+          <button
+            className='ui basic button icon'
+            onClick={this.handleFormOpen}
+          >
+            <i className='plus icon'></i>
+          </button>
+        </div>
+      );
+    }
   },
 });
 
@@ -54,7 +83,7 @@ const EditableTimerList = React.createClass({
 });
 
 const EditableTimer = React.createClass({
-  getInitalState: function () {
+  getInitialState: function () {
     return {
       editFormOpen: false,
     };
@@ -77,65 +106,6 @@ const EditableTimer = React.createClass({
           elapsed={this.props.elapsed}
           runningSince={this.props.runningSince}
         />
-      );
-    }
-  },
-});
-
-const TimerForm = React.createClass({
-  render: function () {
-    const submitText = this.props.title ? 'Update' : 'Create';
-    return (
-      <div className='ui centered card'>
-        <div className='content'>
-          <div className='ui form'>
-            <div className='field'>
-              <label>Title</label>
-              <input type='text' defaultValue={this.props.title} />
-            </div>
-            <div className='field'>
-              <label>Project</label>
-              <input type='text' defaultValue={this.props.project} />
-            </div>
-            <div className='ui two bottom attached buttons'>
-              <button className='ui basic blue button'>
-                {submitText}
-              </button>
-              <button className='ui basic red button'>
-                Cancel
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-  },
-});
-
-const ToggleableTimerForm = React.createClass({
-  getInitalState: function () {
-    return {
-      isOpen: false,
-    };
-  },
-  handleFormOpen: function () {
-    this.setState({ isOpen: true });
-  },
-  render: function () {
-    if (this.state.isOpen) {
-      return (
-        <TimerForm />
-      );
-    } else {
-      return (
-        <div className='ui basic content center aligned segment'>
-          <button
-            className='ui basic button icon'
-            onClick={this.handleFormOpen}
-          >
-            <i className='plus icon'></i>
-          </button>
-        </div>
       );
     }
   },
@@ -169,6 +139,36 @@ const Timer = React.createClass({
         </div>
         <div className='ui bottom attached blue basic button'>
           Start
+        </div>
+      </div>
+    );
+  },
+});
+
+const TimerForm = React.createClass({
+  render: function () {
+    const submitText = this.props.title ? 'Update' : 'Create';
+    return (
+      <div className='ui centered card'>
+        <div className='content'>
+          <div className='ui form'>
+            <div className='field'>
+              <label>Title</label>
+              <input type='text' defaultValue={this.props.title} />
+            </div>
+            <div className='field'>
+              <label>Project</label>
+              <input type='text' defaultValue={this.props.project} />
+            </div>
+            <div className='ui two bottom attached buttons'>
+              <button className='ui basic blue button'>
+                {submitText}
+              </button>
+              <button className='ui basic red button'>
+                Cancel
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     );
