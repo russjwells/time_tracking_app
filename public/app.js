@@ -338,7 +338,7 @@ const TimerForm = React.createClass({
               <button
                 className='ui basic blue button'
                 onClick={this.handleSubmit}
-              >
+              > 
                 {submitText}
               </button>
               <button
