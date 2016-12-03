@@ -20,10 +20,17 @@
         "runningSince": 1456225941911
     },
     {
-        "title": "Timer",
-        "project": "Project",
+        "title": "super new timer",
+        "project": "wow",
         "id": "82bb4c69-6bd0-4746-b4a1-ed917b1b42e9",
         "elapsed": 0,
-        "runningSince": null
+        "runningSince": 1480748652429
+    },
+    {
+        "title": "new timer",
+        "project": "stay",
+        "id": "0f419926-d71d-48bd-b24f-579625ea44ea",
+        "elapsed": 0,
+        "runningSince": 1480748655040
     }
 ]
